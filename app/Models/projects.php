@@ -8,19 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class projects extends Model
 {
     //use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
             'id',
-            'tags_id',
-            'subject_id',
-            'environment_id',
-            'resources_id',
-            'mechanism_id',
             'title',
             'logo',
+            'description',
             'abstract',
             'overview',
             'image',
             'link',
+            'content',
             'launchd',
             'proponent',
             'progress',

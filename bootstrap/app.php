@@ -10,6 +10,12 @@ return Application::configure(basePath: dirname(__DIR__))
         api: __DIR__.'/../routes/api.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
+         then: function () {
+        Route::namespace('sdg_marsu')
+            ->prefix('sdg_marsu')
+            ->name('sdg_marsu.')
+            ->group(base_path('routes/sdg_marsu.php'));
+        },
     )
     ->withMiddleware(function (Middleware $middleware) {
         //

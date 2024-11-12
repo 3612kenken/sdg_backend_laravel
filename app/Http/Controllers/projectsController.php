@@ -10,10 +10,11 @@ use App\Models\projects;
 class projectsController extends Controller
 {
     public function index(){
-        $projects = projects::select(['id','title','logo', 'abstract',
+        $projects = projects::select(['id','title','logo','description','abstract',
             'overview',
             'image',
             'link',
+            'content',
             'launchd',
             'proponent',
             'progress',
@@ -31,22 +32,20 @@ class projectsController extends Controller
         return response()->json($data, 200);
     }
     public function upload(Request $request){
+
         
         $validator= Validator::make($request->all(),
         [
 
             'id'=>'required',
-            'tags_id'=>'required',
-            'subject_id'=>'required',
-            'environment_id'=>'required',
-            'resources_id'=>'required',
-            'mechanism_id'=>'required',
             'title'=>'required',
             'logo'=>'required', 
+            'description'=>'required', 
             'abstract'=>'required',
             'overview'=>'required',
             'image'=>'required',
             'link'=>'required',
+            'content'=>'required',
             'launchd'=>'required',
             'proponent'=>'required',
             'progress'=>'required',
@@ -74,17 +73,14 @@ class projectsController extends Controller
             $projects =  new projects;
 
             $projects->id=$request->id;
-            $projects->tags_id=$request->tags_id;
-            $projects->subject_id=$request->subject_id;
-            $projects->environment_id=$request->environment_id;
-            $projects->resources_id=$request->resources_id;
-            $projects->mechanism_id=$request->mechanism_id;
             $projects->title=$request->title;
             $projects->logo=$request->logo; 
+            $projects->description=$request->description; 
             $projects->abstract=$request->abstract;
             $projects->overview=$request->overview;
             $projects->image=$request->image;
             $projects->link=$request->link;
+            $projects->content=$request->content;
             $projects->launchd=$request->launchd;
             $projects->proponent=$request->proponent;
             $projects->progress=$request->progress;
@@ -111,17 +107,14 @@ class projectsController extends Controller
         [
 
             'id'=>'required',
-            'tags_id'=>'required',
-            'subject_id'=>'required',
-            'environment_id'=>'required',
-            'resources_id'=>'required',
-            'mechanism_id'=>'required',
             'title'=>'required',
             'logo'=>'required', 
+            'description'=>'required', 
             'abstract'=>'required',
             'overview'=>'required',
             'image'=>'required',
             'link'=>'required',
+            'content'=>'required',
             'launchd'=>'required',
             'proponent'=>'required',
             'progress'=>'required',
@@ -149,17 +142,14 @@ class projectsController extends Controller
             $projects =  projects::find($id);
 
             $projects->id=$request->id;
-            $projects->tags_id=$request->tags_id;
-            $projects->subject_id=$request->subject_id;
-            $projects->environment_id=$request->environment_id;
-            $projects->resources_id=$request->resources_id;
-            $projects->mechanism_id=$request->mechanism_id;
             $projects->title=$request->title;
             $projects->logo=$request->logo; 
+            $projects->description=$request->description; 
             $projects->abstract=$request->abstract;
             $projects->overview=$request->overview;
             $projects->image=$request->image;
             $projects->link=$request->link;
+            $projects->content=$request->content;
             $projects->launchd=$request->launchd;
             $projects->proponent=$request->proponent;
             $projects->progress=$request->progress;

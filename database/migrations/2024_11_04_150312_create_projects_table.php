@@ -12,18 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->increments('id')->nullable();
-            $table->integer('tags_id')->nullable();
-            $table->integer('subject_id')->nullable();
-            $table->integer('environment_id')->nullable();
-            $table->integer('resources_id')->nullable();
-            $table->integer('mechanism_id')->nullable();
+            $table->id('id');
             $table->string('title')->nullable();
             $table->string('logo')->nullable();
+            $table->text('description')->nullable();
             $table->text('abstract')->nullable();
             $table->text('overview')->nullable();
             $table->string('image')->nullable();
             $table->string('link')->nullable();
+            $table->text('content')->nullable();
             $table->string('launchd')->nullable();
             $table->text('proponent')->nullable();
             $table->text('progress')->nullable();
