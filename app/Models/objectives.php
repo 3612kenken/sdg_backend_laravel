@@ -12,7 +12,7 @@ class objectives extends Model
      protected $fillable = [
         'objective_id',
         'objective',
-        'id',
+        'id'
     ];
  //   protected $primaryKey = 'tags_id';
  //   public $incrementing = false;

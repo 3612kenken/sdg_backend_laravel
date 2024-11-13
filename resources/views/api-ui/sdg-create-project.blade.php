@@ -69,6 +69,10 @@
                                           <h4 class="text-white">Project Introduction</h4>
                                         </div>
                                     <div class="form-group">
+                                        <label for="id">Auto-generated ID</label>
+                                        <input type="text" id="id" class="form-control"  name="id" disabled>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="image">Image</label>
                                         <input type="text" id="image" class="form-control"  name="image">
                                     </div>

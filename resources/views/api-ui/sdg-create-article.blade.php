@@ -64,6 +64,10 @@
                              
                                 <div class="col-md-8 col-12">
                                    
+                                    <div class="form-group">
+                                        <label for="id">Auto-generated ID</label>
+                                        <input type="text" id="article_id " class="form-control"  name="article_id " disabled>
+                                    </div>
                                     
                                     <div class="form-group">
                                         <label for="headline">Headline</label>
