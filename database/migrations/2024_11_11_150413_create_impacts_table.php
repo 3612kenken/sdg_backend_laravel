@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('impacts', function (Blueprint $table) {
             $table->id('impact_id');
             $table->text('impact')->nullable();
-            $table->integer('id')->nullable();
+            $table->string('id')->nullable();
         });
     }
 

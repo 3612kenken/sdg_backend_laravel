@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('article_reminders', function (Blueprint $table) {
-            $table->id('add_reminder_id');
-            $table->text('reminder')->nullable();
-            $table->string('article_id')->nullable();
+        Schema::create('impacts', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('article_reminders');
+        Schema::dropIfExists('impacts');
     }
 };

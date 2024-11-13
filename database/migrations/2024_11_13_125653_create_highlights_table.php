@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('article_reminders', function (Blueprint $table) {
-            $table->id('add_reminder_id');
-            $table->text('reminder')->nullable();
-            $table->string('article_id')->nullable();
+        Schema::create('highlights', function (Blueprint $table) {
+            $table->id('highlight_id');
+            $table->text('highlight')->nullable();
+            $table->string('id')->nullable();
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('article_reminders');
+        Schema::dropIfExists('highlights');
     }
 };

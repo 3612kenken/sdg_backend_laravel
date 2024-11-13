@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->id('tags_id')->unique();
-            $table->string('tag_name')->nullable();
-            $table->string('tag_icon')->nullable();
+        Schema::create('galleries', function (Blueprint $table) {
+            $table->string('gallery_id', 30)->primary();
+            $table->string('gallery_image')->nullable();
+            $table->text('gallery_caption')->nullable();
+            $table->text('gallery_alt')->nullable();
+            $table->integer('gallery_caption')->nullable();
             $table->string('id')->nullable();
+
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('galleries');
     }
 };

@@ -13,7 +13,7 @@ class Tags extends Model
      protected $fillable = [
         'tags_id',
         'tag_name',
-        'tag_image',
+        'tag_icon',
         'id',
     ];
 }
