@@ -24,7 +24,7 @@
                 
                         <h3>Sign In</h3>
                         <h4>MarSU Sustainable Development Goals</h4>
-                         <a class="btn btn-primary float-right" href="{{ url('/sdg_marsu/view-insert') }}" >View Insert</a>
+                         <a class="btn btn-primary float-right" href="{{ url('/sdg_marsu/create-project') }}" >Create Projects</a>
                     </div>
                     <form action="/sdg_marsu/register" method="POST">
                         @csrf

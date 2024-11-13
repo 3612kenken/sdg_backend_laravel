@@ -13,8 +13,14 @@ Route::get('/', function () {
 
 Route::post('/register', [UserAccountController::class,'register'] );
 
-Route::get('/view-insert', function(){
 
-    return view('/api-ui/sdg-insert');
+Route::get('/create-article', function(){
+
+    return view('/api-ui/sdg-create-article');
+
+});
+Route::get('/create-project', function(){
+
+    return view('/api-ui/sdg-create-project');
 
 });

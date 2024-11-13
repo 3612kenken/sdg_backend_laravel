@@ -10,6 +10,7 @@ class Article extends Model
     public $timestamps = false;
     protected $fillable = [
   
+            'article_id',
             'headline',
             'sub_headline',
             'by_line',
@@ -20,6 +21,5 @@ class Article extends Model
             'future_plans',
             'conclusion',
             'call_to_action',
-            'add_reminder_id',
     ];
 }

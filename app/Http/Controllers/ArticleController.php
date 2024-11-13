@@ -22,8 +22,7 @@ class ArticleController extends Controller
             'impact' => 'required',
             'future_plans' => 'required',
             'conclusion' => 'required',
-            'call_to_action' => 'required',
-            'add_reminder_id' => 'required'
+            'call_to_action' => 'required'
 
         ]);
 

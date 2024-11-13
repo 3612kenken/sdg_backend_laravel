@@ -22,7 +22,6 @@ return new class extends Migration
             $table->text('future_plans')->nullable();
             $table->text('conclusion')->nullable();
             $table->text('call_to_action')->nullable();
-            $table->string('add_reminder_id')->nullable();
         });
     }
 
