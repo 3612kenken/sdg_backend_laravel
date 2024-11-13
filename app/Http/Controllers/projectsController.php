@@ -10,20 +10,22 @@ use App\Models\projects;
 class projectsController extends Controller
 {
     public function index(){
-        $projects = projects::select(['id','title','logo','description','abstract',
-            'overview',
+        $projects = projects::select(
+            [
+
+            'id',
             'image',
+            'title',
+            'subtitle',
+            'author',
+            'proj_date',
             'link',
-            'content',
-            'launchd',
-            'proponent',
-            'progress',
-            'problems',
-            'solution',
-            'completion',
-            'output',
-            'costing',
-            'future'])->get();
+            'logo',
+            'background',
+            'conclusion',
+            'cta'
+
+            ])->get();
 
         $data =[
             'projects' => $projects
@@ -36,26 +38,19 @@ class projectsController extends Controller
         
         $validator= Validator::make($request->all(),
         [
+           
 
             'id'=>'required',
-            'title'=>'required',
-            'logo'=>'required', 
-            'description'=>'required', 
-            'abstract'=>'required',
-            'overview'=>'required',
             'image'=>'required',
-            'link'=>'required',
-            'content'=>'required',
-            'launchd'=>'required',
-            'proponent'=>'required',
-            'progress'=>'required',
-            'problems'=>'required',
-            'solution'=>'required',
-            'completion'=>'required',
-            'output'=>'required',
-            'costing'=>'required',
-            'future'=>'required'
-            
+            'title'=>'required',
+            'subtitle'=>'required', 
+            'author'=>'required',
+            'proj_date'=>'required',
+            'link'=>'required'
+            'logo'=>'required',
+            'background'=>'required',
+            'conclusion'=>'required'
+            'cta'=>'required'
         ]);
         
         if($validator->fails())
@@ -73,23 +68,16 @@ class projectsController extends Controller
             $projects =  new projects;
 
             $projects->id=$request->id;
-            $projects->title=$request->title;
-            $projects->logo=$request->logo; 
-            $projects->description=$request->description; 
-            $projects->abstract=$request->abstract;
-            $projects->overview=$request->overview;
             $projects->image=$request->image;
+            $projects->title=$request->title;
+            $projects->subtitle=$request->subtitle; 
+            $projects->author=$request->author;
+            $projects->proj_date=$request->proj_date;
             $projects->link=$request->link;
-            $projects->content=$request->content;
-            $projects->launchd=$request->launchd;
-            $projects->proponent=$request->proponent;
-            $projects->progress=$request->progress;
-            $projects->problems=$request->problems;
-            $projects->solution=$request->solution;
-            $projects->completion=$request->completion;
-            $projects->output=$request->output;
-            $projects->costing=$request->costing;
-            $projects->future=$request->future;
+            $projects->logo=$request->logo; 
+            $projects->background=$request->background;
+            $projects->conclusion=$request->conclusion;
+            $projects->cta=$request->cta;
 
             $projects->save();
 
@@ -107,23 +95,16 @@ class projectsController extends Controller
         [
 
             'id'=>'required',
-            'title'=>'required',
-            'logo'=>'required', 
-            'description'=>'required', 
-            'abstract'=>'required',
-            'overview'=>'required',
             'image'=>'required',
-            'link'=>'required',
-            'content'=>'required',
-            'launchd'=>'required',
-            'proponent'=>'required',
-            'progress'=>'required',
-            'problems'=>'required',
-            'solution'=>'required',
-            'completion'=>'required',
-            'output'=>'required',
-            'costing'=>'required',
-            'future'=>'required'
+            'title'=>'required',
+            'subtitle'=>'required', 
+            'author'=>'required',
+            'proj_date'=>'required',
+            'link'=>'required'
+            'logo'=>'required',
+            'background'=>'required',
+            'conclusion'=>'required'
+            'cta'=>'required'
             
         ]);
         
@@ -142,23 +123,16 @@ class projectsController extends Controller
             $projects =  projects::find($id);
 
             $projects->id=$request->id;
-            $projects->title=$request->title;
-            $projects->logo=$request->logo; 
-            $projects->description=$request->description; 
-            $projects->abstract=$request->abstract;
-            $projects->overview=$request->overview;
             $projects->image=$request->image;
+            $projects->title=$request->title;
+            $projects->subtitle=$request->subtitle; 
+            $projects->author=$request->author;
+            $projects->proj_date=$request->proj_date;
             $projects->link=$request->link;
-            $projects->content=$request->content;
-            $projects->launchd=$request->launchd;
-            $projects->proponent=$request->proponent;
-            $projects->progress=$request->progress;
-            $projects->problems=$request->problems;
-            $projects->solution=$request->solution;
-            $projects->completion=$request->completion;
-            $projects->output=$request->output;
-            $projects->costing=$request->costing;
-            $projects->future=$request->future;
+            $projects->logo=$request->logo; 
+            $projects->background=$request->background;
+            $projects->conclusion=$request->conclusion;
+            $projects->cta=$request->cta;
 
             $projects->save();
 

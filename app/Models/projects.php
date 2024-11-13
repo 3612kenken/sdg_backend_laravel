@@ -10,23 +10,18 @@ class projects extends Model
     //use HasFactory;
     public $timestamps = false;
     protected $fillable = [
+            
             'id',
-            'title',
-            'logo',
-            'description',
-            'abstract',
-            'overview',
             'image',
+            'title',
+            'subtitle',
+            'author',
+            'proj_date',
             'link',
-            'content',
-            'launchd',
-            'proponent',
-            'progress',
-            'problems',
-            'solution',
-            'completion',
-            'output',
-            'costing',
-            'future',
+            'logo',
+            'background',
+            'conclusion',
+            'cta'
+            
     ];
 }

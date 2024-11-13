@@ -85,8 +85,8 @@
                                         <input type="text" id="author" class="form-control"  name="author">
                                     </div>
                                     <div class="form-group">
-                                        <label for="date">Date</label>
-                                        <input type="date" id="date" class="form-control"  name="date">
+                                        <label for="proj_date">Date</label>
+                                        <input type="date" id="proj_date" class="form-control"  name="proj_date">
                                     </div>
                                     
                                     

@@ -13,23 +13,17 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id('id');
-            $table->string('title')->nullable();
-            $table->string('logo')->nullable();
-            $table->text('description')->nullable();
-            $table->text('abstract')->nullable();
-            $table->text('overview')->nullable();
             $table->string('image')->nullable();
+            $table->string('title')->nullable();
+            $table->text('subtitle')->nullable();
+            $table->text('author')->nullable();
+            $table->date('proj_date')->nullable();
             $table->string('link')->nullable();
-            $table->text('content')->nullable();
-            $table->string('launchd')->nullable();
-            $table->text('proponent')->nullable();
-            $table->text('progress')->nullable();
-            $table->text('problems')->nullable();
-            $table->text('solution')->nullable();
-            $table->text('completion')->nullable();
-            $table->text('output')->nullable();
-            $table->text('costing')->nullable();
-            $table->text('future')->nullable();
+            $table->string('logo')->nullable();
+            $table->text('background')->nullable();
+            $table->text('conclusion')->nullable();
+            $table->text('cta')->nullable();
+
         });
     }
 
