@@ -12,12 +12,17 @@ use App\Http\Controllers\ArticleController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/SaveArticle', [ArticleController::class,'CreateArticle'] );
 
-Route::get('/ShowArticle', [ArticleController::class,'ShowArticle'] );
 
 Route::post('/register', [UserAccountController::class,'register'] );
 
+Route::post('/Article', [ArticleController::class,'CreateArticle'] );
+
+Route::get('/Article', [ArticleController::class,'ShowArticle'] );
+
+Route::put('/edit/{article_id}', [ArticleController::class,'EditArticle'] );
+
+Route::delete('/delete/{article_id}', [ArticleController::class,'DeleteArticle'] );
 
 Route::get('/create-article', function(){
     $data = DB::table('articles')->get();

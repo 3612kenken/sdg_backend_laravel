@@ -127,7 +127,7 @@ class ArticleController extends Controller
 
         }else{
 
-             $article =  projects::find($article_id);
+             $article =  Article::find($article_id);
 
             $article->article_id=$request->article_id;
             $article->headline=$request->headline;
