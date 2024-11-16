@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('article_id', 30)->primary();
             $table->text('headline')->nullable();
             $table->text('sub_headline')->nullable();
+            $table->text('by_line')->nullable();
             $table->text('lead_paragraph')->nullable();
             $table->text('background_information')->nullable();
             $table->text('highlights')->nullable();
@@ -22,6 +23,8 @@ return new class extends Migration
             $table->text('future_plans')->nullable();
             $table->text('conclusion')->nullable();
             $table->text('call_to_action')->nullable();
+            $table->text('reminder')->nullable();
+
         });
     }
 
