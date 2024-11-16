@@ -51,7 +51,7 @@ class projectsController extends Controller
                 'date' => $project->proj_date,
                 'link' => "/sdg/project/{$project->id}/" . urlencode($project->title),
                 'logo' => "/sdg/project/marsu-" . urlencode($project->title) . ".jpg",
-                'cotent' => [
+                'content' => [
                     ['background' => $project->content->background],
                     ['highlights' => $this->splitArray($project->content->highlights)],
                     ['impact' => $this->splitArray($project->content->impact)],
