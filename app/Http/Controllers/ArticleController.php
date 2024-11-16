@@ -92,8 +92,54 @@ class ArticleController extends Controller
         return response()->json($data, 200);
         
     }
-    public function EditArticle(Request $request, $id){
+    public function EditArticle(Request $request, $article_id){
+         $createArticlefields= Validator::make($request->all(),
+        [
+            'article_id' => 'required',
+            'headline' => 'required',
+            'sub_headline' => 'required',
+            'lead_paragraph' => 'required',
+            'background_information' => 'required',
+            'highlights' => 'required',
+            'impact' => 'required',
+            'future_plans' => 'required',
+            'conclusion' => 'required',
+            'call_to_action' => 'required'
+        ]);
+          if($createArticlefields->fails())
+        {
 
+            $data=[
+                "status"=>422,
+                "message"=>$createArticlefields->messages()
+            ];
+            
+            return response()->json($data, 422);
+          
+
+        }else{
+
+             $article =  projects::find($article_id);
+
+            $article->article_id=$request->article_id;
+            $article->headline=$request->headline;
+            $article->sub_headline=$request->sub_headline;
+            $article->lead_paragraph=$request->lead_paragraph; 
+            $article->background_information=$request->background_information;
+            $article->highlights=$request->highlights;
+            $article->impact=$request->impact;
+            $article->future_plans=$request->future_plans; 
+            $article->conclusion=$request->conclusion;
+            $article->call_to_action=$request->call_to_action;
+
+            $article->save();
+
+            $data=[
+                "status"=>200,
+                "message"=>'Data Edited'
+            ];
+             return response()->json($data, 200);
+        }
     }
 
      public function DeleteArticle($article_id){
