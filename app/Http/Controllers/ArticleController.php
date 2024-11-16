@@ -55,7 +55,7 @@ class ArticleController extends Controller
             $article->future_plans=$request->future_plans; 
             $article->conclusion=$request->conclusion;
             $article->call_to_action=$request->call_to_action;
-             $article->reminder=$request->reminder;
+            $article->reminder=$request->reminder;
             
 
             $article->save();
