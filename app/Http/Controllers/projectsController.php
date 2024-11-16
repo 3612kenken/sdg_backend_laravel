@@ -150,7 +150,18 @@ class projectsController extends Controller
     }
 
 
-    public function edit(Request $request, $id){
+    public function edit(Request $request){
+        
+        $id = request()->route('id');
+        $project = Project::where('id', $id)->first();   
+        if ($project == null) {
+            $data = [
+                "status" => 404,
+                "message" => "Id does not exist"
+            ];
+            return response()->json($data, 404);
+        }
+
         $validator= Validator::make($request->all(),
         [
             'image'=>'required',
@@ -174,46 +185,44 @@ class projectsController extends Controller
         
         if($validator->fails())
         {
-
             $data=[
                 "status"=>422,
                 "message"=>$validator->messages()
             ];
             
             return response()->json($data, 422);
-          
 
         }else{
-            $projects = Project::find($id);
-            $projects->image=$request->image;
-            $projects->title=$request->title;
-            $projects->subtitle=$request->subtitle;
-            $projects->author=$request->author;
-            $projects->proj_date=$request->proj_date;
-            $projects->conclusion=$request->conclusion;
-            $projects->cta=$request->cta;
-            $projects->save();
+            $project->image=$request->image;
+            $project->title=$request->title;
+            $project->subtitle=$request->subtitle;
+            $project->author=$request->author;
+            $project->proj_date=$request->proj_date;
+            $project->conclusion=$request->conclusion;
+            $project->cta=$request->cta;
+            $project->save();
 
             $content_form = [
-                'projects_id' => $projects->id,
                 'background' => $request->content_background,
                 'highlights' => $this->concatenateArray($request->content_highlights),
                 'impact' => $this->concatenateArray($request->content_impact),
                 'outcomes' => $this->concatenateArray($request->content_outcomes),
                 'plans' => $this->concatenateArray($request->content_plans)
             ];
-            Content::create($content_form);
+            $content = Content::where('projects_id', $project->id);
+            $content->update($content_form);
 
             $tag_form = [
-                'projects_id' => $projects->id,
                 'name' => $this->concatenateArray($request->tags_name),
                 'icons' => $this->concatenateArray($request->tags_icons),
             ];
-            Tags::create($tag_form);
+            $tags = Tags::where('projects_id', $project->id);
+            $tags->update($tag_form);
 
+            Gallery::where('projects_id', $id)->delete();
             foreach ($request->galleries as $gallery) {
                 $gallery_form = [
-                    'projects_id' => $projects->id,
+                    'projects_id' => $id,
                     'caption' => $gallery['caption'],
                     'alt' => $gallery['alt']
                 ];
@@ -224,7 +233,6 @@ class projectsController extends Controller
                 "status"=>200,
                 "message"=>'Data Updated'
             ];
-
             return response()->json($data, 200);
 
         }
