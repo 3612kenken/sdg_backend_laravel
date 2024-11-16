@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Validator;
 class projectsController extends Controller
 {
 
-    function concatenateArray($strings, $separator = '|') {
+    function concatenateArray($strings, $separator = ':*+!/:') {
         if (is_string($strings)) {
             return $strings;
         }
         return implode($separator, $strings);
     }
 
-    function splitArray($concatenatedString, $separator = '|') {
+    function splitArray($concatenatedString, $separator = ':*+!/:') {
         if (strpos($concatenatedString, $separator) === false) {
             return $concatenatedString;
         }
@@ -153,17 +153,23 @@ class projectsController extends Controller
     public function edit(Request $request, $id){
         $validator= Validator::make($request->all(),
         [
-            'id'=>'required',
             'image'=>'required',
             'title'=>'required',
             'subtitle'=>'required', 
             'author'=>'required',
-            'proj_date'=>'required',
-            'link'=>'required',
-            'logo'=>'required',
-            'background'=>'required',
+            'proj_date'=>'required|date',
+            'content_background' => 'required',
+            'content_highlights' => 'required',
+            'content_impact' => 'required',
+            'content_outcomes' => 'required',
+            'content_plans' => 'required',
             'conclusion'=>'required',
-            'cta'=>'required'
+            'cta'=>'required',
+            'tags_name' => 'required',
+            'tags_icons' => 'required',
+            'galleries' => 'required',
+            'galleries.*.caption' => 'required',
+            'galleries.*.alt' => 'required'
         ]);
         
         if($validator->fails())
@@ -178,21 +184,41 @@ class projectsController extends Controller
           
 
         }else{
-            $projects =  Project::find($id);
-
-            $projects->id=$request->id;
+            $projects = Project::find($id);
             $projects->image=$request->image;
             $projects->title=$request->title;
-            $projects->subtitle=$request->subtitle; 
+            $projects->subtitle=$request->subtitle;
             $projects->author=$request->author;
             $projects->proj_date=$request->proj_date;
-            $projects->link=$request->link;
-            $projects->logo=$request->logo; 
-            $projects->background=$request->background;
             $projects->conclusion=$request->conclusion;
             $projects->cta=$request->cta;
-
             $projects->save();
+
+            $content_form = [
+                'projects_id' => $projects->id,
+                'background' => $request->content_background,
+                'highlights' => $this->concatenateArray($request->content_highlights),
+                'impact' => $this->concatenateArray($request->content_impact),
+                'outcomes' => $this->concatenateArray($request->content_outcomes),
+                'plans' => $this->concatenateArray($request->content_plans)
+            ];
+            Content::create($content_form);
+
+            $tag_form = [
+                'projects_id' => $projects->id,
+                'name' => $this->concatenateArray($request->tags_name),
+                'icons' => $this->concatenateArray($request->tags_icons),
+            ];
+            Tags::create($tag_form);
+
+            foreach ($request->galleries as $gallery) {
+                $gallery_form = [
+                    'projects_id' => $projects->id,
+                    'caption' => $gallery['caption'],
+                    'alt' => $gallery['alt']
+                ];
+                Gallery::create($gallery_form);
+            }
 
             $data=[
                 "status"=>200,
