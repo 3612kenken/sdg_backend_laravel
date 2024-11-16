@@ -20,5 +20,6 @@ class Article extends Model
             'future_plans',
             'conclusion',
             'call_to_action',
+            'reminder',
     ];
 }

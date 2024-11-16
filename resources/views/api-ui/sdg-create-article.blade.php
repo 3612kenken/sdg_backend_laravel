@@ -110,7 +110,9 @@
                                         <label for="call_to_action">Call to Action</label>
                                        <textarea id="call_to_action" class="form-control"  name="call_to_action"></textarea>
                                     </div>
-                               <p><b>Reminders</b></p>
+                                    <div class="alert text-white" style="background-color: #800200;" role="alert">
+                                         Reminder
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="reminder">Reminder</label>
@@ -119,33 +121,18 @@
 <br>
  <a class="btn btn-primary float-right" onclick="AddReminder();">Add Reminder</a><br><br>
                                     </div>
-                              
-                                         
-                                          
-                                
-                           
-                                   <div class="alert text-white" style="background-color: #800200;" role="alert">
-                                         Reminder Table
-                                    </div>
-                            
-                                        <table class="table">
-                                              <thead id="reminder_table">
+                                        <table class="table table-dark">
+                                              <thead >
                                                 <tr>
                                                   <th scope="col">#</th>
                                                   <th scope="col">Reminder</th>
-                                                
-                                                
                                                   <th scope="col">Action</th>
                                                 </tr>
                                               </thead>
-                                              <tbody>
+                                              <tbody id="reminder_table">
                                                
                                               </tbody>
                                             </table>  
-                                 
-                               
-                                   
-                               
                                	</div>
                                 
                             	</div>
@@ -159,11 +146,11 @@
 </form>
               
                         <div class="row">
-                            <div class="alert alert-primary" role="alert">
+                            <div class="alert text-white" style="background-color: #800200;" role="alert">
                                 <h3 class="text-white">Article List</h3>
                             </div>
                        
-                        		<table class="table">
+                        		<table class="table table-dark">
 											  <thead>
 											    <tr>
 											      <th scope="col">#</th>
@@ -241,6 +228,18 @@
             });
         var reminderIndex = 0;
         const Reminder=[];
+        <?php
+            //  $string = str_replace($delimiters, $delimiters[0], "ang pogi ko /(,|;)/ kenneth");
+                $cisla = ':*+!/:ang pogi ko :*+!/: kenz:*+!/:ghhhh';
+                $parser = explode(':*+!/:', $cisla);
+                $data="";
+                foreach ($parser as $cislo) {
+                    // $cislo . '<br>';
+                    $data.=$cislo . '<br>';
+                    // Here we can further process the numbers
+                }
+              //  echo "alert('".$data."');";
+             ?>
         function AddReminder(){
             var reminterContents=$('textarea#sub_reminder').val();
             reminderIndex+=1;
@@ -249,7 +248,10 @@
 
             $('#reminder_table').html(Reminder);
             $('textarea#sub_reminder').val('');
-            $('textarea#reminder').val(Reminder);
+            $('textarea#reminder').val( $('textarea#reminder').val() + ':*+!/:'+  reminterContents);
+            
+
+
         }
 
 

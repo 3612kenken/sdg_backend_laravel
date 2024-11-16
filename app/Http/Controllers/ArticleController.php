@@ -24,7 +24,8 @@ class ArticleController extends Controller
             'impact' => 'required',
             'future_plans' => 'required',
             'conclusion' => 'required',
-            'call_to_action' => 'required'
+            'call_to_action' => 'required',
+            'reminder' => 'required'
 
         ]);
 
@@ -52,6 +53,8 @@ class ArticleController extends Controller
             $article->future_plans=$request->future_plans; 
             $article->conclusion=$request->conclusion;
             $article->call_to_action=$request->call_to_action;
+             $article->reminder=$request->reminder;
+            
 
             $article->save();
 
@@ -81,7 +84,8 @@ class ArticleController extends Controller
             'impact',
             'future_plans',
             'conclusion',
-            'call_to_action'
+            'call_to_action',
+            'reminder'
 
             ])->get();
 
@@ -104,7 +108,8 @@ class ArticleController extends Controller
             'impact' => 'required',
             'future_plans' => 'required',
             'conclusion' => 'required',
-            'call_to_action' => 'required'
+            'call_to_action' => 'required',
+            'reminder' => 'required'
         ]);
           if($createArticlefields->fails())
         {
@@ -131,6 +136,7 @@ class ArticleController extends Controller
             $article->future_plans=$request->future_plans; 
             $article->conclusion=$request->conclusion;
             $article->call_to_action=$request->call_to_action;
+            $article->reminder=$request->reminder;
 
             $article->save();
 
