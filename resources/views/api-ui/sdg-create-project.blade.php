@@ -68,10 +68,13 @@
                                     <div class="alert alert-primary" role="alert">
                                           <h4 class="text-white">Project Introduction</h4>
                                         </div>
+
                                     <div class="form-group">
-                                        <label for="id">Auto-generated ID</label>
-                                        <input type="text" id="id" class="form-control"  name="id" disabled>
+                                        <label for="id">Auto-generated ID: <?php echo 'PRJ-'.date('mdYhis').rand(1000,99999)?> </label>
+
+                                        <input type="hidden" id="id" value="<?php echo 'PRJ-'.date('mdYhis').rand(1000,99999)?>" class="form-control"  name="id">
                                     </div>
+                                   
                                     <div class="form-group">
                                         <label for="image">Image</label>
                                         <input type="text" id="image" class="form-control"  name="image">
@@ -119,11 +122,13 @@
 
                                     <div class="form-group">
                                         <label for="highlights">Highlights</label>
-                                        <input type="text" id="highlights" class="form-control"  name="highlights">
+                                        
+                                         <input type="text" id="sub_highlights" class="form-control"  name="sub_highlights">
+                                        <input type="hidden" id="highlights" class="form-control"  name="highlights">
                                     </div>
                                      <button class="btn btn-primary float-right">Save</button>
                                  
-                                        <table class="table">
+                                        <table class="table table-dark">
                                               <thead>
                                                 <tr>
                                                   <th scope="col">#</th>
@@ -133,7 +138,7 @@
                                                   <th scope="col">Action</th>
                                                 </tr>
                                               </thead>
-                                              <tbody>
+                                              <tbody id="highlights_table">
                                                
                                               </tbody>
                                             </table>  
@@ -143,17 +148,19 @@
                                         </div>    
                                     <div class="form-group">
                                         <label for="impact">Impact</label>
-                                        <textarea type="text" id="impact" class="form-control"  name="impact"></textarea>
+                                        <textarea type="text" id="sub_impact" class="form-control"  name="sub_impact"></textarea>
+
+                                        <textarea type="hidden" id="impact" class="form-control"  name="impact"></textarea>
                                     </div>
                                     <button class="btn btn-primary float-right">Save</button>
-                                            <table class="table">
+                                            <table class="table table-dark">
                                               <thead>
                                                 <tr>
                                                   <th scope="col">#</th>
                                                   <th scope="col">Impact</th>
                                                   <th scope="col">Action</th>
                                                 </tr>
-                                              </thead>
+                                              </thead id="impact_table">
                                               <tbody>
                                                
                                               </tbody>
@@ -164,10 +171,11 @@
                                         </div>      
                                     <div class="form-group">
                                         <label for="outcome">Outcome</label>
-                                        <textarea type="text" id="outcome" class="form-control"  name="outcome"></textarea>
+                                        <textarea type="text" id="sub_outcome" class="form-control"  name="sub_outcome"></textarea>
+                                        <textarea type="hidden" id="outcome" class="form-control"  name="outcome"></textarea>
                                     </div>
                                     <button class="btn btn-primary float-right">Save</button>
-                                            <table class="table">
+                                            <table class="table table-dark">
                                               <thead>
                                                 <tr>
                                                   <th scope="col">#</th>
@@ -185,10 +193,11 @@
                                         </div>       
                                     <div class="form-group">
                                         <label for="plan">Plan</label>
+                                        <textarea type="text" id="sub_plan" class="form-control"  name="sub_plan"></textarea>
                                         <textarea type="text" id="plan" class="form-control"  name="plan"></textarea>
                                     </div>
                                     <button class="btn btn-primary float-right">Save</button>
-                                            <table class="table">
+                                            <table class="table table-dark">
                                               <thead>
                                                 <tr>
                                                   <th scope="col">#</th>
@@ -217,15 +226,17 @@
 
                                     <div class="form-group">
                                         <label for="tag_name">Name</label>
-                                        <input type="text" id="tag_name" class="form-control"  name="tag_name">
+                                        <input type="hidden" id="tag_name" class="form-control"  name="tag_name">
+                                        <input type="text" id="sub_tag_name" class="form-control"  name="sub_tag_name">
                                     </div>
                                     <div class="form-group">
                                         <label for="tag_icon">Icon</label>
-                                        <input type="text" id="tag_icon" class="form-control"  name="tag_icon">
+                                        <input type="text" id="sub_tag_icon" class="form-control"  name="sub_tag_icon">
+                                        <input type="hidden" id="tag_icon" class="form-control"  name="tag_icon">
                                     </div>
                                      <button class="btn btn-primary float-right">Save</button>
                                  
-                                        <table class="table">
+                                        <table class="table table-dark">
                                               <thead>
                                                 <tr>
                                                   <th scope="col">#</th>
@@ -260,7 +271,7 @@
                                     </div>
                                      <button class="btn btn-primary float-right">Save</button>
                                  
-                                        <table class="table">
+                                        <table class="table table-dark">
                                               <thead>
                                                 <tr>
                                                   <th scope="col">#</th>
@@ -293,7 +304,7 @@
                         <div class="row">
                             <div class="alert alert-primary" role="alert">
                              <h4 class="text-white">Projects List</h4> </div>
-                                <table class="table">
+                                <table class="table table-dark">
                                               <thead>
                                                 <tr>
                                                   <th scope="col">#</th>
@@ -305,15 +316,8 @@
                                                   <th scope="col">Abstract</th>
                                                   <th scope="col">Date</th>
                                                   
-                                                  <th scope="col">Background</th>
-                                                  <th scope="col">Highlights</th>
-                                                  <th scope="col">Impacts</th>
-                                                  <th scope="col">Outcomes</th>
-                                                  <th scope="col">Plans</th>
-                                                  <th scope="col">Conclusion</th>
-                                                  <th scope="col">CTA</th>
-                                                  <th scope="col">Tags</th>
-                                                  <th scope="col">Gallery</th>
+                                                  <th scope="col">Other Information</th>
+                                             
                                                 
                                                   <th scope="col">Action</th>
                                                 </tr>
@@ -347,5 +351,42 @@
     <script src="{{ url('assets/js/pages/dashboard.js') }}"></script>
 
     <script src="{{ url('assets/js/main.js') }}"></script>
+     <!-- AJAX Script/Link-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        var IndexHighlights=0;
+        var IndexOmpact=0;
+        var IndexOutcomes=0;
+        var IndexPlans=0;
+
+        const highlights=[];
+        const impact=[];
+        const outcomes=[];
+        const plans=[];
+        function AddHighlight(){
+            var highlightsContents=$('#highlights').val();
+            IndexHighlights+=1;
+            highlights.push('<tr><td>'+ IndexHighlights + '</td><td>'+ highlightsContents +'</td><td><a class="btn btn-danger btn-sm">Delete</a></td></tr>');
+            
+
+            $('#highlights_table').html(highlights);
+            $('#sub_highlights').val('');
+            $('#highlights').val( $('#highlights').val() + ':*+!/:'+  highlightsContents);
+ 
+        }
+        function AddImpact(){
+            var reminterContents=$('textarea#sub_reminder').val();
+            reminderIndex+=1;
+            Reminder.push('<tr><td>'+ reminderIndex + '</td><td>'+ reminterContents +'</td><td><a class="btn btn-danger btn-sm">Delete</a></td></tr>');
+            
+
+            $('#reminder_table').html(Reminder);
+            $('textarea#sub_reminder').val('');
+            $('textarea#reminder').val( $('textarea#reminder').val() + ':*+!/:'+  reminterContents);
+ 
+        }
+    </script>
 </body>
 </html>
