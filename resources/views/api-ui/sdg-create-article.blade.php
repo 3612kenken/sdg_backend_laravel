@@ -79,6 +79,10 @@
                                         <label for="sub_headline">Subheadline</label>
                                         <textarea  id="sub_headline" class="form-control"  name="sub_headline"></textarea>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="by_line">By Line</label>
+                                        <input type="text"  id="by_line" class="form-control"  name="by_line">
+                                    </div>
                           
                                     <div class="form-group">
                                         <label for="lead_paragraph">Lead Paragraph</label>

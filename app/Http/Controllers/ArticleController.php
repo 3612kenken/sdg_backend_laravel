@@ -18,6 +18,7 @@ class ArticleController extends Controller
             'article_id' => 'required',
             'headline' => 'required',
             'sub_headline' => 'required',
+            'by_line' => 'required',
             'lead_paragraph' => 'required',
             'background_information' => 'required',
             'highlights' => 'required',
@@ -46,6 +47,7 @@ class ArticleController extends Controller
             $article->article_id=$request->article_id;
             $article->headline=$request->headline;
             $article->sub_headline=$request->sub_headline;
+            $article->by_line=$request->by_line;
             $article->lead_paragraph=$request->lead_paragraph; 
             $article->background_information=$request->background_information;
             $article->highlights=$request->highlights;
@@ -78,6 +80,7 @@ class ArticleController extends Controller
             'article_id',
             'headline',
             'sub_headline',
+            'by_line',
             'lead_paragraph',
             'background_information',
             'highlights',
@@ -129,6 +132,8 @@ class ArticleController extends Controller
             $article->article_id=$request->article_id;
             $article->headline=$request->headline;
             $article->sub_headline=$request->sub_headline;
+            
+            $article->by_line=$request->by_line;
             $article->lead_paragraph=$request->lead_paragraph; 
             $article->background_information=$request->background_information;
             $article->highlights=$request->highlights;

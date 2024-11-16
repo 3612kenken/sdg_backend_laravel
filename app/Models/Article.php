@@ -13,6 +13,7 @@ class Article extends Model
             'article_id',
             'headline',
             'sub_headline',
+            'by_line',
             'lead_paragraph',
             'background_information',
             'highlights',
