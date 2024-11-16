@@ -10,7 +10,6 @@ class mechanismController extends Controller
     public function createMechanism(Request $request){
         $createMechanismfields =  $request->validate
             ([
-
                 'mechanism_id'=>'required',
                 'planning' => 'required',
                 'design' => 'required',
@@ -18,7 +17,6 @@ class mechanismController extends Controller
                 'testing' => 'required',
                 'monitoring' => 'required',
                 'id' => 'required'
-
             ]);
 
            $mechanism = mechanism::create($createMechanismfields);

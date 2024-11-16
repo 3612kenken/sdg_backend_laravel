@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('highlights', function (Blueprint $table) {
-            $table->id('highlight_id');
+            $table->i();
             $table->text('highlight')->nullable();
-            $table->string('id')->nullable();
         });
     }
 

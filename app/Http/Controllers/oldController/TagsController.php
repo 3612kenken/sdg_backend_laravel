@@ -13,7 +13,7 @@ class TagsController extends Controller
         ([
             'tags_id'=>'required',
             'tag_name' => 'required',
-            'tag_icon' => 'required'
+            'tag_icon' => 'required',
             'id' => 'required'
         ]);
 

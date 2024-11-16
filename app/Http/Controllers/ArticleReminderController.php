@@ -7,9 +7,9 @@ use App\Models\ArticleReminder;
 
 class ArticleReminderController extends Controller
 {
+    public function createArtcleReminder(Request $request){
     $createArticleReminderfields =  $request->validate
         ([
-
             'reminder' => 'required',
             'article_id' => 'required'
 

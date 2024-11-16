@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Tags extends Model
 {
     use HasFactory;
-    public $timestamps = false;
 
      protected $fillable = [
-        'tags_id',
-        'tag_name',
-        'tag_icon',
-        'id',
+        'projects_id',
+        'name',
+        'icons',
     ];
+
+    public function project(){
+        return $this->belongsTo(Project::class, 'projects_id', 'id');
+    }
 }

@@ -12,11 +12,9 @@ class GalleryController extends Controller
         
         $createGalleryfields =  $request->validate
         ([
-
             'gallery_image' => 'required',
             'gallery_caption' => 'required',
             'gallery_alt' => 'required'
-
         ]);
 
        $gallery = Gallery::create($createGalleryfields);

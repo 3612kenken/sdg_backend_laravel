@@ -10,7 +10,6 @@ class HighlightsController extends Controller
     public function createHighlight(Request $request){
         $createHighlightfields =  $request->validate
             ([
-
                 'highlight_id'=>'required',
                 'highlight' => 'required',
                 'id' => 'required'

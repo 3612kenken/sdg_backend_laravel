@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Gallery extends Model
+class Content extends Model
 {
-
-     protected $fillable = [
+    protected $fillable = [
         'projects_id',
-        'caption',
-        'alt'
+        'background',
+        'highlights',
+        'impact',
+        'outcomes',
+        'plans'
     ];
 
     public function project(){

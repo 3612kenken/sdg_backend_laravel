@@ -12,7 +12,7 @@ Route::get('/user', function (Request $request) {
 
 
 
-Route::get('/projects', [projectsController::class,'index'] );
+Route::get('projects', [projectsController::class,'index'] );
 Route::post('projects', [projectsController::class,'upload'] );
 Route::put('projects/edit/{id}', [projectsController::class,'edit'] );
 Route::delete('projects/delete/{id}', [projectsController::class,'delete'] );
