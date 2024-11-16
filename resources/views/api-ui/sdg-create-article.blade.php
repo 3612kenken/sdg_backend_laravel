@@ -59,7 +59,7 @@
                   
                     <div class="card-body">
                       
-                        <!--<form action="/sdg_marsu/SaveArticle" method="POST">-->
+                        <form action="/sdg_marsu/SaveArticle" method="POST">
                             @CSRF
                             <div class="row">
                              
@@ -114,18 +114,22 @@
 
                                     <div class="form-group">
                                         <label for="reminder">Reminder</label>
-                                        <textarea type="text" id="reminder" class="form-control"  name="reminder"></textarea>
+                                        <textarea type="text" id="sub_reminder" class="form-control"  name="sub_reminder"></textarea>
+                                        <textarea type="text" id="reminder" class="form-control"  name="reminder" style="display: none;"></textarea>
+<br>
+ <a class="btn btn-primary float-right" onclick="AddReminder();">Add Reminder</a><br><br>
                                     </div>
-                                    <div class="alert text-white" style="background-color: #800200;" role="alert">
-Additional Reminder
+                              
+                                         
+                                          
+                                
+                           
+                                   <div class="alert text-white" style="background-color: #800200;" role="alert">
+                                         Reminder Table
                                     </div>
-                               
-
-                                 
-                                     <button class="btn btn-primary float-right">Save</button>
-                                 
+                            
                                         <table class="table">
-                                              <thead>
+                                              <thead id="reminder_table">
                                                 <tr>
                                                   <th scope="col">#</th>
                                                   <th scope="col">Reminder</th>
@@ -148,11 +152,11 @@ Additional Reminder
 
                              <br>
                             <div class="clearfix">
-                                <button class="btn btn-success float-right" onclick="SaveRecord();">Save Article</button>
+                                <button class="btn btn-success float-right" >Save Article</button>
                                 <br>
                                 <br>
                             </div>
-
+</form>
               
                         <div class="row">
                             <div class="alert alert-primary" role="alert">
@@ -235,6 +239,19 @@ Additional Reminder
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
             });
+        var reminderIndex = 0;
+        const Reminder=[];
+        function AddReminder(){
+            var reminterContents=$('textarea#sub_reminder').val();
+            reminderIndex+=1;
+            Reminder.push('<tr><td>'+ reminderIndex + '</td><td>'+ reminterContents +'</td><td><a class="btn btn-danger btn-sm">Delete</a></td></tr>');
+            
+
+            $('#reminder_table').html(Reminder);
+            $('textarea#sub_reminder').val('');
+            $('textarea#reminder').val(Reminder);
+        }
+
 
         function SaveRecord(){
     
