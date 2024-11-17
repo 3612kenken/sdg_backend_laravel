@@ -33,6 +33,8 @@ Route::get('/create-article', function(){
     ]);
 
 });
+
+
 Route::get('/create-project', function(){
 
     return view('/api-ui/sdg-create-project');

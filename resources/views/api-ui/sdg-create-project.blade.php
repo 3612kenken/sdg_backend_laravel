@@ -59,7 +59,7 @@
                   
                     <div class="card-body">
                       
-                        <form action="index.html">
+                        <form action="" method="POST">
                             <div class="row">
                                 
                               
@@ -126,7 +126,7 @@
                                          <input type="text" id="sub_highlights" class="form-control"  name="sub_highlights">
                                         <input type="hidden" id="highlights" class="form-control"  name="highlights">
                                     </div>
-                                     <button class="btn btn-primary float-right">Save</button>
+                                     <a class="btn btn-primary float-right" onclick="AddHighlight();" >+</a>
                                  
                                         <table class="table table-dark">
                                               <thead>
@@ -147,12 +147,12 @@
                                           Impacts
                                         </div>    
                                     <div class="form-group">
-                                        <label for="impact">Impact</label>
+                                        <label for="sub_impact">Impact</label>
                                         <textarea type="text" id="sub_impact" class="form-control"  name="sub_impact"></textarea>
 
-                                        <textarea type="hidden" id="impact" class="form-control"  name="impact"></textarea>
+                                <textarea  id="impact"  name="impact" style="display: none;"></textarea>
                                     </div>
-                                    <button class="btn btn-primary float-right">Save</button>
+                                    <a class="btn btn-primary float-right" onclick="AddImpact();">+</a>
                                             <table class="table table-dark">
                                               <thead>
                                                 <tr>
@@ -160,8 +160,8 @@
                                                   <th scope="col">Impact</th>
                                                   <th scope="col">Action</th>
                                                 </tr>
-                                              </thead id="impact_table">
-                                              <tbody>
+                                              </thead >
+                                              <tbody id="impact_table">
                                                
                                               </tbody>
                                             </table> 
@@ -172,9 +172,9 @@
                                     <div class="form-group">
                                         <label for="outcome">Outcome</label>
                                         <textarea type="text" id="sub_outcome" class="form-control"  name="sub_outcome"></textarea>
-                                        <textarea type="hidden" id="outcome" class="form-control"  name="outcome"></textarea>
+                                        <textarea type="hidden" id="outcome" class="form-control"  name="outcome" style="display: none;"></textarea>
                                     </div>
-                                    <button class="btn btn-primary float-right">Save</button>
+                                    <a class="btn btn-primary float-right" onclick="AddOutcome();">+</a>
                                             <table class="table table-dark">
                                               <thead>
                                                 <tr>
@@ -183,9 +183,9 @@
                                                   <th scope="col">Action</th>
                                                 </tr>
                                               </thead>
-                                              <tbody>
+                                              <tbody id="outcome_table">
                                                
-                                              </tbody>
+                                              </tbody >
                                             </table> 
                              
                                   <div class="alert text-white" style="background-color: #800200;"  role="alert">
@@ -193,10 +193,10 @@
                                         </div>       
                                     <div class="form-group">
                                         <label for="plan">Plan</label>
-                                        <textarea type="text" id="sub_plan" class="form-control"  name="sub_plan"></textarea>
-                                        <textarea type="text" id="plan" class="form-control"  name="plan"></textarea>
+                                        <textarea type="text" id="sub_plan" class="form-control"  name="sub_plan" ></textarea>
+                                        <textarea id="plan" class="form-control"  name="plan" style="display: none;"></textarea>
                                     </div>
-                                    <button class="btn btn-primary float-right">Save</button>
+                                    <a class="btn btn-primary float-right" onclick="AddPlan();">+</a>
                                             <table class="table table-dark">
                                               <thead>
                                                 <tr>
@@ -205,7 +205,7 @@
                                                   <th scope="col">Action</th>
                                                 </tr>
                                               </thead>
-                                              <tbody>
+                                              <tbody id="plan_table">
                                                
                                               </tbody>
                                             </table> 
@@ -232,9 +232,9 @@
                                     <div class="form-group">
                                         <label for="tag_icon">Icon</label>
                                         <input type="text" id="sub_tag_icon" class="form-control"  name="sub_tag_icon">
-                                        <input type="hidden" id="tag_icon" class="form-control"  name="tag_icon">
+                                        <input type="hidden" id="tag_icon" class="form-control"  name="tag_icon" >
                                     </div>
-                                     <button class="btn btn-primary float-right">Save</button>
+                                     <button class="btn btn-primary float-right">+</button>
                                  
                                         <table class="table table-dark">
                                               <thead>
@@ -269,7 +269,7 @@
                                         <label for="gallery_alt">Alt</label>
                                         <input type="text" id="gallery_alt" class="form-control"  name="gallery_alt">
                                     </div>
-                                     <button class="btn btn-primary float-right">Save</button>
+                                     <button class="btn btn-primary float-right">+</button>
                                  
                                         <table class="table table-dark">
                                               <thead>
@@ -357,7 +357,7 @@
     <script type="text/javascript">
 
         var IndexHighlights=0;
-        var IndexOmpact=0;
+        var IndexImpact=0;
         var IndexOutcomes=0;
         var IndexPlans=0;
 
@@ -366,7 +366,7 @@
         const outcomes=[];
         const plans=[];
         function AddHighlight(){
-            var highlightsContents=$('#highlights').val();
+            var highlightsContents=$('#sub_highlights').val();
             IndexHighlights+=1;
             highlights.push('<tr><td>'+ IndexHighlights + '</td><td>'+ highlightsContents +'</td><td><a class="btn btn-danger btn-sm">Delete</a></td></tr>');
             
@@ -377,14 +377,36 @@
  
         }
         function AddImpact(){
-            var reminterContents=$('textarea#sub_reminder').val();
-            reminderIndex+=1;
-            Reminder.push('<tr><td>'+ reminderIndex + '</td><td>'+ reminterContents +'</td><td><a class="btn btn-danger btn-sm">Delete</a></td></tr>');
+            var impactContents=$('textarea#sub_impact').val();
+           // alert(impactContents);
+            IndexImpact+=1;
+            impact.push('<tr><td>'+ IndexImpact + '</td><td>'+ impactContents +'</td><td><a class="btn btn-danger btn-sm">Delete</a></td></tr>');
             
 
-            $('#reminder_table').html(Reminder);
-            $('textarea#sub_reminder').val('');
-            $('textarea#reminder').val( $('textarea#reminder').val() + ':*+!/:'+  reminterContents);
+            $('#impact_table').html(impact);
+            $('textarea#sub_impact').val('');
+            $('textarea#impact').val( $('textarea#impact').val() + ':*+!/:'+  impactContents);
+ 
+        }
+
+        function AddOutcome(){
+            var outcomeContents=$('textarea#sub_outcome').val();
+         
+            IndexOutcomes+=1;
+            outcomes.push('<tr><td>'+ IndexOutcomes + '</td><td>'+ outcomeContents +'</td><td><a class="btn btn-danger btn-sm">Delete</a></td></tr>');
+            $('#outcome_table').html(outcomes);
+            $('textarea#sub_outcome').val('');
+            $('textarea#outcome').val( $('textarea#outcome').val() + ':*+!/:'+  outcomeContents);
+ 
+        }
+        function AddPlan(){
+            var planContents=$('textarea#sub_plan').val();
+        
+            IndexPlans+=1;
+            plans.push('<tr><td>'+ IndexPlans + '</td><td>'+ planContents +'</td><td><a class="btn btn-danger btn-sm">Delete</a></td></tr>');
+            $('#plan_table').html(plans);
+            $('textarea#sub_plan').val('');
+            $('textarea#plan').val( $('textarea#plan').val() + ':*+!/:'+  planContents);
  
         }
     </script>

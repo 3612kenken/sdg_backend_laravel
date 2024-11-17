@@ -172,12 +172,12 @@
 
                              <br>
                             <div class="clearfix">
-                                
+                                <button class="btn btn-success float-right" onclick='SaveRecord();' >Save Article</button>
                                 <br>
                                 <br>
                             </div>
 </form>
-              <button class="btn btn-success float-right" onclick='SaveRecord();' >Save Article</button>
+         
                         <div class="row">
                             <div class="alert text-white" style="background-color: #800200;" role="alert">
                                 <h3 class="text-white">Article List</h3>
@@ -239,7 +239,7 @@
                                                        <button class="btn btn-danger btn-sm" onclick="DeleteArticle(&#39;{{$data->article_id }}&#39;, &#39;{{$data->sub_headline }}&#39;)">Delete</button>
                                                         </td>
                                                      </tr>
-                                                      <script type="text/javascript">
+                           <script type="text/javascript">
                             aarticle_id.push(<?php echo '"' ?> {{$data->article_id }} <?php echo '"' ?>);
                             headline.push(<?php echo '"' ?> {{$data->headline }} <?php echo '"' ?>);
                             sub_headline.push(<?php echo '"' ?> {{$data->sub_headline }} <?php echo '"' ?>);
@@ -279,7 +279,6 @@
     
 	</section>
 </div>
-
            	@include('api-ui.footer');
             @include('api-ui.swalert');
       
