@@ -59,7 +59,6 @@ class ArticleController extends Controller
             $article->call_to_action=$request->call_to_action;
             $article->reminder=$request->reminder;
             
-
             $article->save();
 
             $data=[

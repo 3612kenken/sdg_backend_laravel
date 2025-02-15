@@ -306,26 +306,45 @@
                              <h4 class="text-white">Projects List</h4> </div>
                                 <table class="table table-dark">
                                               <thead>
-                                                <tr>
-                                                  <th scope="col">#</th>
+                                                
+                                    <tr>
+                                                 
                                                   <th scope="col">ID</th>
                                                   <th scope="col">Image</th>
                                                   <th scope="col">Title</th>
                                                   
-                                                  <th scope="col">Subtitle</th>
-                                                  <th scope="col">Abstract</th>
-                                                  <th scope="col">Date</th>
+                                                  <th scope="col">Author</th>
+                                                  <th scope="col">Project Date</th>
                                                   
                                                   <th scope="col">Other Information</th>
                                              
                                                 
                                                   <th scope="col">Action</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody>
-                                               
-                                              </tbody>
-                                            </table> 
+                                    </tr>
+
+                                    </thead>
+                                    <tbody>
+                                          <?php  $i=0; 
+
+
+                                               ?>
+                                        @foreach($data2 as $data2)
+                                            <tr>
+                                                        <td>{{$data2->id}}</td>
+                                                        <td>{{$data2->image }}</td>
+                                                        <td>{{$data2->title }}</td>
+                                                        <td>{{$data2->author }}</td>
+                                                        <td>{{$data2->proj_date }}</td>
+                                                        <td>
+                                                            <button class="btn btn-secondary btn-sm">Show All</button>
+                                                        </td>
+                                        <td><button class="btn btn-info btn-sm" onclick="EditProject(<?php echo $i; ?>, &#39;{{$data2->id }}&#39;);">Edit</button> 
+                                                       <button class="btn btn-danger btn-sm" onclick="DeleteProject(&#39;{{$data2->id }}&#39;)">Delete</button>
+                                                        </td>
+                                                     </tr> 
+                                        @endforeach
+                                    </tbody>
+                                </table> 
                         </div>
                     </div>
                 </div>

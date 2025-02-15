@@ -5,6 +5,38 @@
 
 
 <body>
+    <div class="modal fade text-left" id="show-all" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h5 class="modal-title white" id="myModalLabel1">Article Information</h5>
+                    <button type="button" class="close rounded-pill" data-dismiss="modal" aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="ainfo">  </p>
+                    <div class="col-md-4"> 
+
+                    <p ><br><br><b>Reminders</b></p>
+                     <table class="table" >
+                                              <thead >
+                                                <tr>
+                                                  <th scope="col">#</th>
+                                                  <th scope="col">Reminder</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody id="show-reminders">
+                                               
+                                              </tbody>
+                                            </table>  </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+        
     <div class="modal fade" id="art-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -233,7 +265,7 @@
                                                         <td>{{$data->lead_paragraph }}</td>
                                                         <td>{{$data->background_information }}</td>
                                                         <td>
-                                                            <button class="btn btn-secondary btn-sm">Show All</button>
+                                                            <button class="btn btn-secondary btn-sm" onclick="ArticleInfo(<?php echo $i; ?>)">Show All</button>
                                                         </td>
                                         <td><button class="btn btn-info btn-sm" onclick="EditArticle(<?php echo $i; ?>, &#39;{{$data->article_id }}&#39;);">Edit</button> 
                                                        <button class="btn btn-danger btn-sm" onclick="DeleteArticle(&#39;{{$data->article_id }}&#39;, &#39;{{$data->sub_headline }}&#39;)">Delete</button>
@@ -328,7 +360,7 @@
 
         }
         function forTableReminder(rmd){
-                        const reminders = rmd.split(":*+!/:");
+            const reminders = rmd.split(":*+!/:");
 
             reminderIndex =0;
 
@@ -341,6 +373,18 @@
             $('textarea#sub_reminder').val('');
             $('textarea#reminder').val( $('textarea#reminder').val() + ':*+!/:'+  rmd);
 
+        }
+        function forTableReminderContents(rmd){
+            const reminders = rmd.split(":*+!/:");
+
+            reminderIndex =0;
+
+            for (const remd in reminders) {
+
+                Reminder.push('<tr><td>'+ reminderIndex + '</td><td>'+ remd +'</td></tr>');
+            }
+
+            $('#show-reminders').html(Reminder);
         }
 
 
@@ -409,6 +453,7 @@
             }
         }
         //alert('_token = <?php echo csrf_token() ?>');
+
         function EditArticle(edit_id, art_id){
 
 
@@ -429,6 +474,28 @@
 
             $("#frm-article").attr('action', '/sdg_marsu/edit/'+ art_id);
              $("#frm-article").attr("method", "PUT");
+
+        }
+        
+
+        function ArticleInfo(indx_id){
+            var AContents="";
+
+            AContents = AContents + "<b>Article ID: </b>" + aarticle_id[indx_id];
+            AContents = AContents + "<br><br><b>Headline: </b>" + headline[indx_id];
+            AContents = AContents + "<br><br><b>Sub Headline: </b>" + sub_headline[indx_id];
+            AContents = AContents + "<br><br><b>By Line: </b>" + by_line[indx_id];
+            AContents = AContents + "<br><br><b>Lead Paragraph: </b>" + lead_paragraph[indx_id];
+            AContents = AContents + "<br><br><b>Background Information: </b>" + background_information[indx_id];
+            AContents = AContents + "<br><br><b>Highlights: </b>" + highlights[indx_id];
+            AContents = AContents + "<br><br><b>Impact: </b>" + impact[indx_id];
+            AContents = AContents + "<br><br><b>Future Plans: </b>" + future_plans[indx_id];
+            AContents = AContents + "<br><br><b>Conclution: </b>" + conclusion[indx_id];
+            AContents = AContents + "<br><br><b>Reminder: </b>" + rreminder[indx_id];
+            forTableReminderContents(rreminder[indx_id]);
+            $('#ainfo').html(AContents);
+            $('#show-all').modal('show');
+           
 
         }
 

@@ -24,6 +24,7 @@ Route::put('/edit/{article_id}', [ArticleController::class,'EditArticle'] );
 
 Route::delete('/delete/{article_id}', [ArticleController::class,'DeleteArticle'] );
 
+
 Route::get('/create-article', function(){
     $data = DB::table('articles')->get();
 
@@ -37,7 +38,11 @@ Route::get('/create-article', function(){
 
 Route::get('/create-project', function(){
 
-    return view('/api-ui/sdg-create-project');
+    $data2 = DB::table('projects')->get();
+    return view('/api-ui/sdg-create-project',[
+
+        'data2'=>$data2
+    ]);
 
 });
 

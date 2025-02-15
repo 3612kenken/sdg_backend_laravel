@@ -88,10 +88,13 @@ class projectsController extends Controller
             'cta'=>'required',
             'tags_name' => 'required',
             'tags_icons' => 'required',
-            'galleries' => 'required',
-            'galleries.*.caption' => 'required',
-            'galleries.*.alt' => 'required'
+       
         ]);
+        
+        /*
+             'galleries' => 'required',
+            'galleries.*.caption' => 'required',
+            'galleries.*.alt' => 'required'*/
         
         if($validator->fails())
         {
