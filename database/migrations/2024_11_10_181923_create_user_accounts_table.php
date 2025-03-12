@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('user_accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('mi')->nullable();
             $table->string('username')->nullable();
+            $table->string('email')->nullable();
             $table->string('password')->nullable();
             $table->string('designation')->nullable();
+            $table->string('user_level')->nullable();
         });
     }
 
