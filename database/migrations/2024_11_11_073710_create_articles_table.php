@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('conclusion')->nullable();
             $table->text('call_to_action')->nullable();
             $table->text('reminder')->nullable();
+            $table->text('user_id')->nullable();
 
         });
     }

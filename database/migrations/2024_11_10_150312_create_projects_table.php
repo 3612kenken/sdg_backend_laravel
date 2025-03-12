@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('proj_date')->nullable();
             $table->string('conclusion')->nullable();
             $table->string('cta')->nullable();
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }

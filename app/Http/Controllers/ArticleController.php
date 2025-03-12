@@ -26,7 +26,8 @@ class ArticleController extends Controller
             'future_plans' => 'required',
             'conclusion' => 'required',
             'call_to_action' => 'required',
-            'reminder' => 'required'
+            'reminder' => 'required',
+            'user_id' => 'required'
 
         ]);
 

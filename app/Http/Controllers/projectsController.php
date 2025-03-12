@@ -43,7 +43,8 @@ class projectsController extends Controller
             }
 
             $fetch_form[] = [
-                'id' => $project->id,
+                'i
+                d' => $project->id,
                 'image' => $project->image,
                 'title' => $project->title,
                 'subtitle' => $project->subtitle,
@@ -60,6 +61,7 @@ class projectsController extends Controller
                 ],
                 'conclusion' => $project->conclusion,
                 'cta' => $project->cta,  
+                'user_id' => $project->user_id, 
                 'tag' => [
                     'name' => $this->splitArray($project->tag->name),
                     'icons' => $this->splitArray($project->tag->icons)
@@ -86,16 +88,14 @@ class projectsController extends Controller
             'content_plans' => 'required',
             'conclusion'=>'required',
             'cta'=>'required',
+            'user_id'=>'required',
             'tags_name' => 'required',
             'tags_icons' => 'required',
-       
         ]);
-        
         /*
              'galleries' => 'required',
             'galleries.*.caption' => 'required',
             'galleries.*.alt' => 'required'*/
-        
         if($validator->fails())
         {
             $message = $validator->messages()->all()[0];
@@ -114,6 +114,7 @@ class projectsController extends Controller
             $projects->proj_date=$request->proj_date;
             $projects->conclusion=$request->conclusion;
             $projects->cta=$request->cta;
+            $projects->user_id=$request->user_id;
             $projects->save();
 
             $content_form = [
@@ -179,6 +180,7 @@ class projectsController extends Controller
             'content_plans' => 'required',
             'conclusion'=>'required',
             'cta'=>'required',
+            'user_id'=>'required',
             'tags_name' => 'required',
             'tags_icons' => 'required',
             'galleries' => 'required',
@@ -203,6 +205,7 @@ class projectsController extends Controller
             $project->proj_date=$request->proj_date;
             $project->conclusion=$request->conclusion;
             $project->cta=$request->cta;
+            $project->user_id=$request->user_id;
             $project->save();
 
             $content_form = [
